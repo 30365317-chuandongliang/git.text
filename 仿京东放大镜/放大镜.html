@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .box {
+        display: flex;
+        width: 800px;
+        height: 600px;
+        top: 50px;
+        left: 50px;
+        position: relative;
+    }
+
+    .abox>img {
+        width: 400px;
+        margin-bottom: 10px;
+
+    }
+
+    .abox {
+        position: absolute;
+    }
+
+    #ull {
+        position: absolute;
+        width: 252px;
+        height: 252px;
+        background-color: rgba(255, 255, 0, .3);
+        top: 0;
+        left: 0;
+        display: none;
+    }
+
+    .xbox {
+        width: 450px;
+        height: 57px;
+        margin-left: 3px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        position: absolute;
+
+    }
+
+    .scc {
+        border: 2px solid red;
+
+    }
+
+    .bbox {
+        position: absolute;
+        left: 455px;
+        top: 0;
+        width: 500px;
+        height: 500px;
+        overflow: hidden;
+        border: 1px solid rgb(240, 240, 240);
+        display: none;
+    }
+
+    .bbox>img {
+        width: 900px;
+        height: 900px;
+        position: absolute;
+
+    }
+</style>
+
+<body>
+    <div class="box">
+
+        <div class="abox">
+            <div class="cbox">
+
+                <img src="./仿京东放大镜素材/images/1_middle.jpg" style="border: 1px solid rgb(240,240,240);"
+                    alt="">
+                <div id="ull">
+                </div>
+
+            </div>
+            <div class="xbox">
+                <img class="scc" src="./仿京东放大镜素材/images/1_small.jpg" alt="">
+                <img src="./仿京东放大镜素材/images/2_small.jpg" alt="">
+                <img src="./仿京东放大镜素材/images/3_small.jpg" alt="">
+                <img src="./仿京东放大镜素材/images/4_small.jpg" alt="">
+                <img src="./仿京东放大镜素材/images/5_small.jpg" alt="">
+                <img src="./仿京东放大镜素材/images/6_small.jpg" alt="">
+            </div>
+        </div>
+        <div class="bbox">
+            <img class="sco" src="./仿京东放大镜素材/images/1_big.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        var oimg = document.querySelectorAll(".abox img");
+        var abox = document.querySelector(".box");
+        var cbox = document.querySelector(".cbox");
+        var iimg = document.querySelectorAll(".xbox img");
+        var Omg = document.querySelector(".cbox img");
+        var Img = document.querySelectorAll(".bbox img");
+        var pimg = document.querySelectorAll(".bbox");
+        var uimg = document.getElementById("ull");
+        // 鼠标移入盒子
+        cbox.onmouseover = function () {
+            document.body.style.cursor = "move";
+            uimg.style.display = "block";
+            pimg[0].style.display = "block";
+        }
+        // 鼠标移出盒子
+        cbox.onmouseout = function () {
+            document.body.style.cursor = "default";
+            uimg.style.display = "none";
+            pimg[0].style.display = "none"
+        }
+
+        // 鼠标在盒子里移动
+        cbox.onmousemove = function (e) {
+            var x = e.pageX - abox.offsetLeft - uimg.offsetWidth / 2;
+            var y = e.pageY - abox.offsetTop - uimg.offsetHeight / 2;
+            console.log(x, y);
+            // 框能移动的最小值与最大值
+            var minx = 0;
+            if (x < 0) {
+                x = minx;
+            }
+            var miny = 0;
+            if (y < 0) {
+                y = miny;
+            }
+            var maxx = 200;
+            if (x > 200) {
+                x = maxx;
+            }
+            var maxy = 200;
+            if (y > 200) {
+                y = maxy;
+            }
+            uimg.style.left = `${x}px`;
+            uimg.style.top = `${y}px`;
+
+            // 大图的移动
+            var X = x * 500 / 254;
+            var Y = y * 500 / 254;
+            console.log();
+            Img[0].style.left = `-${X}px`;
+            Img[0].style.top = `-${Y}px`;
+        }
+
+        // 排他，换图片
+        iimg[0].onclick = function () {
+            oimg[0].src = "./仿京东放大镜素材/images/1_middle.jpg";
+            Img[0].src = "./仿京东放大镜素材/images/1_big.jpg";
+
+            for (i = 0; i < iimg.length; i++) {
+                iimg[i].classList.remove("scc");
+            }
+            this.classList.add("scc");
+        }
+        iimg[1].onclick = function () {
+            oimg[0].src = "./仿京东放大镜素材/images/2_middle.jpg";
+            Img[0].src = "./仿京东放大镜素材/images/2_big.jpg";
+            for (i = 0; i < iimg.length; i++) {
+                iimg[i].classList.remove("scc");
+            }
+            this.classList.add("scc");
+        }
+        iimg[2].onclick = function () {
+            oimg[0].src = "./仿京东放大镜素材/images/3_middle.jpg";
+            Img[0].src = "./仿京东放大镜素材/images/3_big.jpg";
+            for (i = 0; i < iimg.length; i++) {
+                iimg[i].classList.remove("scc");
+            }
+            this.classList.add("scc");
+        }
+        iimg[3].onclick = function () {
+            oimg[0].src = "./仿京东放大镜素材/images/4_middle.jpg";
+            Img[0].src = "./仿京东放大镜素材/images/4_big.jpg";
+            for (i = 0; i < iimg.length; i++) {
+                iimg[i].classList.remove("scc");
+            }
+            this.classList.add("scc");
+        }
+        iimg[4].onclick = function () {
+            oimg[0].src = "./仿京东放大镜素材/images/5_middle.jpg";
+            Img[0].src = "./仿京东放大镜素材/images/5_big.jpg";
+            for (i = 0; i < iimg.length; i++) {
+                iimg[i].classList.remove("scc");
+            }
+            this.classList.add("scc");
+        }
+        iimg[5].onclick = function () {
+            oimg[0].src = "./仿京东放大镜素材/images/6_middle.jpg";
+            Img[0].src = "./仿京东放大镜素材/images/6_big.jpg";
+            for (i = 0; i < iimg.length; i++) {
+                iimg[i].classList.remove("scc");
+            }
+            this.classList.add("scc");
+        }
+
+
+    </script>
+</body>
+
+</html>
